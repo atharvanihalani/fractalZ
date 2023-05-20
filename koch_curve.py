@@ -2,29 +2,56 @@ import turtle
 
 mt = turtle.Turtle()
 mt.pu()
-mt.goto(-350, 0)
+mt.goto(-200, 0)
 mt.pd()
 
-x = 3 # length
-iter = 5 # iterations
+x = 10 # length
+iter = 4 # iterations
+angle = 60 # the angle at da tippy top
 
-def recKoch(val: int):
+def regKoch(val: int):
     if val == 0:
         return
     
-    recKoch(val-1)
-    mt.lt(60)
+    regKoch(val-1)
+    mt.lt(90-(angle/2))
     mt.fd(x)
-    recKoch(val-1)
-    mt.rt(120)
+    regKoch(val-1)
+    mt.rt(180-angle)
     mt.fd(x)
-    recKoch(val-1)
-    mt.lt(60)
+    regKoch(val-1)
+    mt.lt(90-(angle/2))
     mt.fd(x)
-    recKoch(val-1)
+    regKoch(val-1)
+
+# mt.fd(x)
+# regKoch(iter)
+
+
+def skewKoch(val: int):
+    if val == 0:
+        return
+    
+    skewKoch(val-1)
+    mt.lt(90-(angle/2))
+    mt.fd(x)
+    skewKoch(val-1)
+    mt.rt(180-angle)
+    mt.fd(x)
+    skewKoch(val-1)
+    mt.lt(90-(angle/2))
+    mt.fd(x/2)
+    skewKoch(val-1)
 
 mt.fd(x)
-recKoch(iter)
+skewKoch(iter)
+
+
+# koch w same (triangle) base, that gets extended to be pointier => will intersect
+
+
+
+
 
 screen = turtle.Screen()
 screen.mainloop()
