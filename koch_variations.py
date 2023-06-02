@@ -1,12 +1,11 @@
 import turtle
-import math
 
 mt = turtle.Turtle()
 mt.hideturtle()
 mt.speed(0)
-mt.pu
+mt.pu()
 mt.goto(-200, 0)
-mt.pd
+mt.pd()
 
 def reg_koch_1(iter: int, len: float, angle: float):
     '''
@@ -28,6 +27,7 @@ def reg_koch_1(iter: int, len: float, angle: float):
     mt.fd(len)
     reg_koch_1(iter-1, len, angle)
 
+
 def reg_koch_2(iter: int, len: int, angle: float):
     '''
     iter index is 'forward shifted' compared to the prev method \r\n
@@ -48,6 +48,7 @@ def reg_koch_2_helper(iter: int, len: float, angle: float):
     else:
         reg_koch_2(iter-1, len, angle)
 
+
 def reg_koch_3(iter: int, size: float, angle: float):
     '''
     same thing as before w a teeny-tiny difference
@@ -67,6 +68,7 @@ def reg_koch_3_helper(iter: int, size: float, angle: float):
         mt.fd(size)
     else:
         reg_koch_3(iter-1, size, angle)
+
 
 def infinite_koch(len: int, angle: float):
     '''
@@ -110,10 +112,11 @@ def inf_koch_helperB(iter: int, len: float, angle: float):
     else:
         inf_koch_helperA(iter-1, len, angle, False)
 
-infinite_koch(15, 60)
 
-# 'skews' the curve at the lowest recursive level
 def faux_koch_1(iter: int, len: int, angle: float):
+    '''
+    'skews' the curve, but only at the lowest recursive level
+    '''
     if iter == 0:
         return
     
@@ -129,10 +132,11 @@ def faux_koch_1(iter: int, len: int, angle: float):
     faux_koch_1(iter-1, len, 60)
     mt.fd(len)
 
-# koch curve but skewed (and hence, scaled slightly diff)
+
 def skew_koch(iter: int, len: float, angle: float):
     '''
     initialize w start length x
+    skews the entire koch curve (& also scalees it slightly diff)
     '''
 
     if iter == 0:
@@ -150,8 +154,12 @@ def skew_koch(iter: int, len: float, angle: float):
     skew_koch(iter-1, len/2, angle)
 
 
-
-
+def koch_triangle(iter: int, len: int, angle: float):
+    reg_koch_2(iter, len, angle)
+    mt.rt(120)
+    reg_koch_2(iter, len, angle)
+    mt.rt(120)
+    reg_koch_2(iter, len, angle)
 
 
 screen = turtle.Screen()
