@@ -206,7 +206,7 @@ def koch_seg_helper(iter: int, len: float, angle: float, recurse_to):
         recurse_to(iter-1, len, angle)
 
 # EXAMPLE CALLS
-# koch_island(Islands.COMPLEX, 2, 400, 90, True)
+koch_island(Islands.COMPLEX, 1, 400, 90, True)
 
 
 screen = turtle.Screen()
